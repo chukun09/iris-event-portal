@@ -15,7 +15,7 @@ services:
       - key: CLIENT_NAME
         value: "Ứng dụng sự kiện IRIS 15 Năm"
       - key: ORG_NAME
-        value: "Công ty cổ phần truyền thông IRIS"
+        value: "Công ty cổ phần giải pháp công nghệ IRIS"
       - key: SECRET_KEY
         sync: false
       - key: IV_KEY

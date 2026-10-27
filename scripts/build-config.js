@@ -47,7 +47,7 @@ const config = {
   DEFAULT_CAMPAIGN_ID: process.env.DEFAULT_CAMPAIGN_ID || '24',
   CLIENT_ID: process.env.CLIENT_ID || 'iris_app',
   CLIENT_NAME: process.env.CLIENT_NAME || 'Ứng dụng sự kiện IRIS 15 Năm',
-  ORG_NAME: process.env.ORG_NAME || 'Công ty cổ phần truyền thông IRIS',
+  ORG_NAME: process.env.ORG_NAME || 'Công ty cổ phần giải pháp công nghệ IRIS',
   SECRET_KEY: secretKey,
   IV_KEY: ivKey,
   EVENT_NAME: process.env.EVENT_NAME || 'CÙNG VIẾT TIẾP HÀNH TRÌNH',
