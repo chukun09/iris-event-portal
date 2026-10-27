@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>MẬT MÃ IRIS - Cổng Sự Kiện 15 Năm</title>
+  
+  <meta name="description" content="Cổng định danh và tham gia sự kiện kỷ niệm 15 năm IRIS (2011 - 2026).">
+  <meta name="theme-color" content="#050a18">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Fonts: Montserrat & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Light Mesh & Starfield Canvas -->
+  <div class="ambient-mesh">
+    <div class="mesh-top"></div>
+    <div class="mesh-bottom"></div>
+  </div>
+  <canvas id="starfield"></canvas>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Mobile First Application Wrapper -->
+  <div class="mobile-portal-wrapper">
+
+    <!-- Header: Logo IRIS & Huy hiệu 15 năm -->
+    <header class="app-header">
+      <div class="brand-row">
+        <svg class="iris-logo-svg" viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M122 3L136 10L128 17L122 3Z" fill="url(#goldGrad)" />
+          <path d="M128 17L136 10L133 19L128 17Z" fill="#D97706" />
+          <text x="6" y="30" font-family="'Montserrat', sans-serif" font-weight="900" font-size="32" fill="#FFFFFF" letter-spacing="2.5">IRIS</text>
+          <defs>
+            <linearGradient id="goldGrad" x1="122" y1="3" x2="136" y2="19" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFE082" />
+              <stop offset="1" stop-color="#F59E0B" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="event-pill">15 NĂM GẮN KẾT</div>
+      </div>
+    </header>
+
+    <!-- Key Visual Artwork -->
+    <div class="kv-card">
+      <img src="assets/key-visual.jpg" alt="IRIS 15 Năm - Cùng Viết Tiếp Hành Trình" class="kv-image" id="kvImage">
+      <div class="kv-glow-border"></div>
+    </div>
+
+    <!-- Quick Pass: Dành cho nhân viên đã từng vào (1 Chạm Vào Ngay) -->
+    <div class="quick-pass-box" id="quickPassBox" style="display: none;">
+      <div class="quick-pass-inner">
+        <div class="quick-avatar" id="quickAvatar">IR</div>
+        <div class="quick-info">
+          <div class="quick-greeting">Chào mừng trở lại!</div>
+          <div class="quick-name" id="quickName">Nguyễn Văn A</div>
+          <div class="quick-dept" id="quickDept">Phòng Phát triển phần mềm</div>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button type="button" class="btn-quick-enter" id="btnQuickEnter">Vào Cổng Ngay ⚡</button>
+        <button type="button" class="btn-switch-user" id="btnSwitchUser">Đổi người</button>
+      </div>
+    </div>
+
+    <!-- Khu Vực Chọn Danh Tính -->
+    <section class="identity-section" id="identitySection">
+      
+      <!-- 1. Thanh Tìm Kiếm Nhanh Thông Minh -->
+      <div class="search-box-wrapper">
+        <div class="search-input-field">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Tìm nhanh họ tên hoặc mã ID..." 
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button type="button" class="clear-search-btn" id="clearSearchBtn">✕</button>
+        </div>
+        <!-- Dropdown Gợi Ý Tìm Kiếm -->
+        <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+      </div>
+
+      <div class="section-divider">
+        <span>HOẶC CHỌN THEO PHÒNG BAN</span>
+      </div>
+
+      <!-- 2. Custom Dropdown Tầng 1: Phòng Ban -->
+      <div class="custom-dropdown-group" id="deptDropdownGroup">
+        <label class="dropdown-label">
+          <span class="label-icon">🏢</span>
+          <span>1. Chọn Phòng Ban</span>
+        </label>
+        <div class="custom-dropdown" id="deptDropdown">
+          <button type="button" class="dropdown-trigger" id="deptTrigger" aria-expanded="false">
+            <span class="trigger-left">
+              <span class="trigger-icon">🏢</span>
+              <span class="trigger-text" id="deptTriggerText">-- Chọn phòng ban của bạn --</span>
+            </span>
+            <span class="trigger-chevron">
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1.5 1.75L6 6.25L10.5 1.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="dropdown-panel" id="deptPanel">
+            <div class="dropdown-panel-inner" id="deptOptionsList">
+              <!-- Danh sách phòng ban sẽ được sinh từ js/data.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Custom Dropdown Tầng 2: Nhân Viên -->
+      <div class="custom-dropdown-group" id="empDropdownGroup">
+        <label class="dropdown-label">
+          <span class="label-icon">👤</span>
+          <span>2. Họ và Tên Nhân Viên</span>
+        </label>
+        <div class="custom-dropdown" id="empDropdown">
+          <button type="button" class="dropdown-trigger disabled" id="empTrigger" aria-expanded="false" disabled>
+            <span class="trigger-left">
+              <span class="trigger-icon">👤</span>
+              <span class="trigger-text" id="empTriggerText">-- Vui lòng chọn phòng ban trước --</span>
+            </span>
+            <span class="trigger-chevron">
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1.5 1.75L6 6.25L10.5 1.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+          <div class="dropdown-panel" id="empPanel">
+            <div class="dropdown-panel-inner" id="empOptionsList">
+              <!-- Danh sách nhân sự theo phòng ban -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TẤM VÉ VIP GALA PASS 15 NĂM (Hiển thị ngay khi chọn được người) -->
+      <div class="vip-ticket-card" id="vipTicketCard" style="display: none;">
+        <div class="ticket-watermark">15</div>
+        <div class="ticket-sheen"></div>
+        <div class="ticket-header">
+          <div class="ticket-badge">
+            <span class="badge-sparkle">✦</span> VIP GALA PASS
+          </div>
+          <div class="ticket-serial" id="ticketSerial">ID: USERNAME</div>
+        </div>
+        
+        <div class="ticket-body">
+          <div class="ticket-avatar-wrap">
+            <div class="ticket-avatar" id="ticketAvatar">NV</div>
+            <div class="avatar-ring"></div>
+          </div>
+          <div class="ticket-info">
+            <div class="ticket-fullname" id="ticketFullName">Họ và Tên</div>
+            <div class="ticket-department" id="ticketDepartment">Phòng Ban</div>
+          </div>
+        </div>
+
+        <div class="ticket-footer">
+          <div class="ticket-status-dot"></div>
+          <span>Đã sẵn sàng kết nối Cổng Game IRIS</span>
+        </div>
+      </div>
+
+      <!-- NÚT CTA CHÍNH: VÀO CỔNG SỰ KIỆN -->
+      <button type="button" class="btn-main-enter" id="btnMainEnter" disabled>
+        <span class="btn-glow-pulse"></span>
+        <span class="btn-text">VÀO CỔNG SỰ KIỆN</span>
+        <span class="btn-icon">🚀</span>
+        <div class="btn-shimmer-sweep"></div>
+      </button>
+
+    </section>
+
+    <!-- Footer Tinh Gọn -->
+    <footer class="app-footer">
+      <p>© 2026 CÔNG TY CỔ PHẦN TRUYỀN THÔNG IRIS</p>
+      <p class="footer-sub">Hành trình 15 năm Đổi mới & Gắn kết (2011 - 2026)</p>
+    </footer>
+
+  </div>
+
+  <!-- Loading Screen Khi Bấm Vào Cổng -->
+  <div class="connecting-screen" id="connectingScreen">
+    <div class="connecting-card">
+      <div class="glowing-spinner"></div>
+      <div class="connecting-title">ĐANG KẾT NỐI CỔNG...</div>
+      <div class="connecting-desc" id="connectingDesc">Đang xác thực bảo mật danh tính nhân sự</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/crypto-js.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

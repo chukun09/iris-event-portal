@@ -1,0 +1,1161 @@
+/* ==========================================================================
+   IRIS 15TH ANNIVERSARY - MOBILE FIRST EVENT PORTAL STYLES
+   Custom Luxury Dropdowns with High-End Animations & Glassmorphism
+   ========================================================================== */
+
+:root {
+  --bg-space-950: #040815;
+  --bg-space-900: #060c20;
+  --bg-space-800: #0a1332;
+  --bg-card: rgba(10, 19, 50, 0.75);
+  
+  --gold-50:  #fffbee;
+  --gold-100: #fff3c4;
+  --gold-200: #ffe48a;
+  --gold-300: #ffd24d;
+  --gold-400: #f5b82e;
+  --gold-500: #d99616;
+  --gold-600: #b0720c;
+
+  --gold-gradient: linear-gradient(135deg, #fff2c2 0%, #f7cf5d 40%, #e6a724 100%);
+  --gold-border: rgba(245, 184, 46, 0.32);
+  --gold-border-focus: rgba(255, 210, 77, 0.85);
+  --gold-glow: 0 0 24px rgba(245, 184, 46, 0.35);
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.18s ease;
+  --transition-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-space-950);
+  color: #ffffff;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Nền Ánh Sáng Vũ Trụ */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mesh-top {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120vw;
+  max-width: 800px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 38, 98, 0.55) 0%, rgba(6, 12, 32, 0.1) 65%, transparent 80%);
+  filter: blur(60px);
+}
+
+.mesh-bottom {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 600px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(217, 150, 22, 0.12) 0%, transparent 70%);
+  filter: blur(70px);
+}
+
+#starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Mobile Portal Container */
+.mobile-portal-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  padding: max(1rem, env(safe-area-inset-top, 1rem)) max(1.15rem, env(safe-area-inset-right, 1.15rem)) max(2.5rem, calc(1.5rem + env(safe-area-inset-bottom, 1rem))) max(1.15rem, env(safe-area-inset-left, 1.15rem));
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  transition: padding var(--transition-smooth);
+}
+
+/* Header */
+.app-header {
+  padding: 0.25rem 0.25rem 0.5rem;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iris-logo-svg {
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(245, 184, 46, 0.3));
+}
+
+.event-pill {
+  padding: 0.35rem 0.85rem;
+  background: rgba(245, 184, 46, 0.12);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-200);
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(245, 184, 46, 0.15);
+  animation: pillGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pillGlow {
+  from { border-color: var(--gold-border); box-shadow: 0 0 10px rgba(245, 184, 46, 0.12); }
+  to { border-color: rgba(255, 210, 77, 0.6); box-shadow: 0 0 18px rgba(245, 184, 46, 0.3); }
+}
+
+/* Key Visual Card */
+.kv-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 24px rgba(245, 184, 46, 0.22);
+  border: 1px solid var(--gold-border);
+  background: #000000;
+  aspect-ratio: 16 / 8.5;
+  animation: breathingGlow 6s ease-in-out infinite;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+@keyframes breathingGlow {
+  0%, 100% {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(245, 184, 46, 0.18);
+    border-color: var(--gold-border);
+  }
+  50% {
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.75), 0 0 35px rgba(245, 184, 46, 0.38);
+    border-color: rgba(255, 210, 77, 0.65);
+  }
+}
+
+.kv-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kv-card:hover .kv-image {
+  transform: scale(1.025);
+}
+
+.kv-glow-border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 20px rgba(245, 184, 46, 0.25);
+  pointer-events: none;
+}
+
+/* Quick Pass */
+.quick-pass-box {
+  background: linear-gradient(135deg, rgba(245, 184, 46, 0.22) 0%, rgba(10, 20, 52, 0.9) 100%);
+  border: 1.5px solid var(--gold-border-focus);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 184, 46, 0.2);
+  animation: quickPassSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes quickPassSlide {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quick-pass-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.quick-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #060c20;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(245, 184, 46, 0.4);
+  flex-shrink: 0;
+}
+
+.quick-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.quick-greeting {
+  font-size: 0.72rem;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.quick-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quick-dept {
+  font-size: 0.78rem;
+  color: #a4b3d6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.btn-quick-enter {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  background: var(--gold-gradient);
+  color: #040815;
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(245, 184, 46, 0.35);
+  transition: transform var(--transition-fast);
+}
+
+.btn-quick-enter:active {
+  transform: scale(0.97);
+}
+
+.btn-switch-user {
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #c0cbe6;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Thẻ Form Chính */
+.identity-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.15rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* Thanh Tìm Kiếm Nhanh */
+.search-box-wrapper {
+  position: relative;
+}
+
+.search-input-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--gold-300);
+  font-size: 1.05rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.95rem 2.6rem 0.95rem 2.75rem;
+  background: rgba(6, 12, 32, 0.85);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #ffffff;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--gold-border-focus);
+  box-shadow: 0 0 18px rgba(245, 184, 46, 0.3);
+}
+
+.search-input::placeholder {
+  color: #7b8ba8;
+  font-size: 0.9rem;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 0.85rem;
+  background: transparent;
+  border: none;
+  color: #7b8ba8;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+  padding: 0.25rem;
+}
+
+.clear-search-btn:hover {
+  color: #ffffff;
+}
+
+/* Dropdown Kết Quả Tìm Kiếm */
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: rgba(8, 15, 38, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1.5px solid var(--gold-border-focus);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), var(--gold-glow);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 120;
+  display: none;
+}
+
+.search-results-dropdown.active {
+  display: block;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item:hover, .result-item:active {
+  background: rgba(245, 184, 46, 0.2);
+  transform: translateX(4px);
+}
+
+.search-highlight {
+  color: #fff2a3;
+  background: rgba(245, 184, 46, 0.25);
+  border-radius: 3px;
+  padding: 0.05rem 0.2rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.result-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.result-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(245, 184, 46, 0.18);
+  border: 1px solid var(--gold-400);
+  color: var(--gold-200);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.result-fullname {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.result-dept {
+  font-size: 0.75rem;
+  color: #8c9cb8;
+}
+
+.result-id-tag {
+  font-size: 0.75rem;
+  font-family: monospace;
+  padding: 0.2rem 0.55rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  color: var(--gold-300);
+}
+
+.result-empty {
+  padding: 1.25rem;
+  text-align: center;
+  color: #8c9cb8;
+  font-size: 0.88rem;
+}
+
+/* Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin: 0.25rem 0;
+  gap: 0.85rem;
+}
+
+.section-divider::before, .section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.section-divider span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-300);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CUSTOM LUXURY DROPDOWNS (PHÒNG BAN & NHÂN VIÊN)
+   ========================================================================== */
+.custom-dropdown-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.dropdown-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold-200);
+  letter-spacing: 0.02em;
+}
+
+.label-icon {
+  font-size: 0.95rem;
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+/* Nút Trigger Dropdown */
+.dropdown-trigger {
+  width: 100%;
+  padding: 0.95rem 1.15rem;
+  background: rgba(6, 12, 32, 0.85);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: all var(--transition-smooth);
+}
+
+.trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.trigger-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.trigger-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--gold-border-focus);
+  background: rgba(9, 18, 48, 0.95);
+}
+
+/* Khi đang mở */
+.custom-dropdown.open .dropdown-trigger {
+  border-color: var(--gold-border-focus);
+  box-shadow: 0 0 20px rgba(245, 184, 46, 0.35);
+  background: rgba(10, 20, 52, 0.98);
+}
+
+.trigger-chevron {
+  color: var(--gold-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-dropdown.open .trigger-chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-trigger.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Floating Menu Panel */
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(7, 14, 38, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1.5px solid var(--gold-border-focus);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.88), var(--gold-glow);
+  max-height: 290px;
+  overflow-y: auto;
+  z-index: 110;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-dropdown.open .dropdown-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Thanh cuộn siêu mỏng dát vàng */
+.dropdown-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dropdown-panel::-webkit-scrollbar-thumb {
+  background: rgba(245, 184, 46, 0.4);
+  border-radius: var(--radius-full);
+}
+
+.dropdown-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Danh Sách Từng Item Trong Menu */
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.custom-dropdown.open .dropdown-option {
+  animation: dropdownItemReveal 0.22s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes dropdownItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover {
+  background: linear-gradient(90deg, rgba(245, 184, 46, 0.2) 0%, rgba(7, 14, 38, 0.1) 100%);
+  transform: translateX(4px);
+}
+
+.dropdown-option.selected {
+  background: rgba(245, 184, 46, 0.18);
+  border-left: 3.5px solid var(--gold-300);
+}
+
+/* Option Phòng Ban */
+.dept-option-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.dept-option-icon {
+  font-size: 1rem;
+}
+
+.dept-option-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dept-option-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold-300);
+  background: rgba(245, 184, 46, 0.12);
+  border: 1px solid rgba(245, 184, 46, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Option Nhân Viên */
+.emp-option-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.emp-option-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #040815;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(245, 184, 46, 0.35);
+}
+
+.emp-option-fullname {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.emp-option-username {
+  font-size: 0.72rem;
+  color: #8c9cb8;
+  font-family: monospace;
+}
+
+.emp-option-check {
+  color: var(--gold-300);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* TẤM VÉ VIP GALA PASS 15 NĂM */
+.vip-ticket-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(245, 184, 46, 0.22) 0%, rgba(10, 22, 60, 0.78) 50%, rgba(6, 12, 32, 0.9) 100%);
+  border: 1.5px solid var(--gold-border-focus);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.15rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 184, 46, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  animation: ticketEntrance 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes ticketEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ticket-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 215, 0, 0.35) 50%,
+    transparent 65%
+  );
+  background-size: 200% 200%;
+  animation: sheenMove 4s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes sheenMove {
+  0% { background-position: -150% -150%; }
+  50% { background-position: 150% 150%; }
+  100% { background-position: 150% 150%; }
+}
+
+.ticket-watermark {
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-family: var(--font-heading);
+  font-size: 7.5rem;
+  font-weight: 900;
+  color: rgba(245, 184, 46, 0.06);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.ticket-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.ticket-badge {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.28rem 0.75rem;
+  background: var(--gold-gradient);
+  color: #040815;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 3px 10px rgba(245, 184, 46, 0.35);
+}
+
+.badge-sparkle {
+  color: #8a5800;
+  font-size: 0.85rem;
+  display: inline-block;
+  animation: sparkleSpin 3s linear infinite;
+}
+
+@keyframes sparkleSpin {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  50% { transform: scale(1.25) rotate(90deg); opacity: 1; }
+}
+
+.ticket-serial {
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: var(--gold-200);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 184, 46, 0.2);
+}
+
+.ticket-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.ticket-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ticket-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  background: var(--gold-gradient);
+  color: #040815;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(245, 184, 46, 0.4);
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--radius-md) + 4px);
+  border: 1.5px solid rgba(255, 210, 77, 0.7);
+  animation: avatarPulseRing 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes avatarPulseRing {
+  0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(245, 184, 46, 0.6); }
+  70% { transform: scale(1.08); opacity: 0; box-shadow: 0 0 0 8px rgba(245, 184, 46, 0); }
+  100% { transform: scale(1.08); opacity: 0; box-shadow: 0 0 0 0 rgba(245, 184, 46, 0); }
+}
+
+.ticket-fullname {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.ticket-department {
+  font-size: 0.82rem;
+  color: var(--gold-200);
+  margin-top: 0.2rem;
+}
+
+.ticket-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: #8c9cb8;
+  border-top: 1px dashed rgba(245, 184, 46, 0.25);
+  padding-top: 0.65rem;
+}
+
+.ticket-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: statusBlink 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes statusBlink {
+  from { opacity: 0.6; box-shadow: 0 0 4px #22c55e; }
+  to { opacity: 1; box-shadow: 0 0 12px #22c55e; }
+}
+
+/* NÚT CTA CHÍNH */
+.btn-main-enter {
+  position: relative;
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #040815;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  box-shadow: 0 8px 25px rgba(245, 184, 46, 0.4), 0 4px 0 var(--gold-600);
+  overflow: hidden;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, filter var(--transition-fast);
+}
+
+.btn-main-enter:not(:disabled) {
+  animation: btnPulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes btnPulseGlow {
+  0% { box-shadow: 0 8px 24px rgba(245, 184, 46, 0.35), 0 4px 0 var(--gold-600); }
+  100% { box-shadow: 0 10px 32px rgba(245, 184, 46, 0.65), 0 4px 0 var(--gold-600); }
+}
+
+.btn-main-enter:active:not(:disabled) {
+  transform: translateY(3px) scale(0.985);
+  box-shadow: 0 2px 8px rgba(245, 184, 46, 0.3), 0 1px 0 var(--gold-600);
+}
+
+.btn-main-enter:disabled {
+  opacity: 0.45;
+  filter: grayscale(0.7);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-icon {
+  font-size: 1.25rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.btn-main-enter:hover:not(:disabled) .btn-icon {
+  transform: translate(2px, -2px) scale(1.15);
+}
+
+.btn-shimmer-sweep {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  transform: skewX(-22deg);
+  animation: shimmerSweep 3s infinite;
+}
+
+@keyframes shimmerSweep {
+  0% { left: -120%; }
+  35% { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* Footer Tinh Gọn */
+.app-footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #6d7b96;
+  padding: 0.5rem 0;
+}
+
+.footer-sub {
+  font-size: 0.7rem;
+  color: #55627a;
+  margin-top: 0.15rem;
+}
+
+/* Loading Chuyển Cảnh */
+.connecting-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 21, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.connecting-screen.active {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.connecting-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.glowing-spinner {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 3px solid rgba(245, 184, 46, 0.2);
+  border-top-color: var(--gold-300);
+  animation: spin 0.8s linear infinite;
+  box-shadow: 0 0 20px rgba(245, 184, 46, 0.3);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.connecting-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.06em;
+}
+
+.connecting-desc {
+  font-size: 0.85rem;
+  color: #c0cbe6;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE FIRST EXTENSIONS)
+   ========================================================================== */
+
+/* 1. Màn hình siêu nhỏ (Small Fold Cover / iPhone SE cũ: <= 360px) */
+@media (max-width: 360px) {
+  html {
+    font-size: 14.5px;
+  }
+  .mobile-portal-wrapper {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    gap: 0.95rem;
+  }
+  .identity-section {
+    padding: 1rem 0.85rem;
+    gap: 0.95rem;
+  }
+  .ticket-body {
+    gap: 0.75rem;
+  }
+  .ticket-avatar {
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+  }
+  .ticket-fullname {
+    font-size: 1rem;
+  }
+  .btn-main-enter {
+    padding: 0.95rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* 2. Màn hình Tablet & Desktop (>= 768px): Khung Glassmorphism sang trọng */
+@media (min-width: 768px) {
+  body {
+    align-items: center;
+    padding: 2.5rem 1rem;
+  }
+  .mobile-portal-wrapper {
+    max-width: 490px;
+    background: rgba(6, 12, 32, 0.7);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(245, 184, 46, 0.28);
+    border-radius: 30px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 45px rgba(245, 184, 46, 0.15);
+    padding: 2rem 1.75rem 2.25rem;
+  }
+  .kv-card {
+    border-radius: 20px;
+  }
+}
+
+/* 3. Màn hình chiều cao khiêm tốn (Bàn phím ảo bật lên hoặc xoay ngang) */
+@media (max-height: 650px) {
+  .mobile-portal-wrapper {
+    gap: 0.85rem;
+    padding-top: 0.65rem;
+  }
+  .kv-card {
+    aspect-ratio: 16 / 7;
+  }
+}

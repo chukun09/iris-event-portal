@@ -1,0 +1,17 @@
+# Dependencies & Build
+node_modules/
+.DS_Store
+Thumbs.db
+
+# IDE & Editor
+.vscode/*
+!.vscode/settings.json
+.idea/
+
+# Graphify AST Cache
+graphify-out/
+
+# Sensitive Environment & Generated Configs
+.env
+.env.*
+js/config.js
