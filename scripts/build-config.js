@@ -44,7 +44,7 @@ if (!secretKey || !ivKey) {
 const config = {
   PORTAL_URL: process.env.PORTAL_URL || 'https://gamezone.minigames.vn/portal/',
   PORTAL_DEV_URL: process.env.PORTAL_DEV_URL || 'https://gameportal-dev.anews.vn/',
-  DEFAULT_CAMPAIGN_ID: process.env.DEFAULT_CAMPAIGN_ID || '24',
+  DEFAULT_CAMPAIGN_ID: process.env.DEFAULT_CAMPAIGN_ID || '25',
   CLIENT_ID: process.env.CLIENT_ID || 'iris_app',
   CLIENT_NAME: process.env.CLIENT_NAME || 'Ứng dụng sự kiện IRIS 15 Năm',
   ORG_NAME: process.env.ORG_NAME || 'Công ty cổ phần giải pháp công nghệ IRIS',

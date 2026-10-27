@@ -459,10 +459,10 @@
     const payload = {
       Username: emp.username,
       UserProfileAttribute: {
-        FullName: emp.fullname,
+        FullName: emp.username, // Sử dụng Nickname để BXH hiển thị nickname thay vì họ tên thật
         Department: emp.department,
         ClientName: config.CLIENT_NAME || 'Ứng dụng sự kiện IRIS 15 Năm',
-        OrgName: config.ORG_NAME || 'Công ty cổ phần truyền thông IRIS'
+        OrgName: config.ORG_NAME || 'Công ty cổ phần giải pháp công nghệ IRIS'
       },
       ClientID: config.CLIENT_ID || 'iris_app'
     };

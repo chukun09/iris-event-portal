@@ -9,7 +9,7 @@ services:
       - key: PORTAL_URL
         value: https://gamezone.minigames.vn/portal/
       - key: DEFAULT_CAMPAIGN_ID
-        value: "24"
+        value: "25"
       - key: CLIENT_ID
         value: iris_app
       - key: CLIENT_NAME

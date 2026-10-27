@@ -207,9 +207,10 @@ def generate_luxury_standee(qr_img):
     # 2. Font chữ hệ thống
     try:
         font_badge = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 26)
-        font_title = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 52)
-        font_subtitle = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 30)
+        font_title = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 54)
+        font_subtitle = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 30)
         font_instruct = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 36)
+        font_sub_instruct = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 24)
         font_url = ImageFont.truetype("C:/Windows/Fonts/segoeuib.ttf", 30)
         font_footer = ImageFont.truetype("C:/Windows/Fonts/segoeui.ttf", 22)
     except Exception:
@@ -217,13 +218,14 @@ def generate_luxury_standee(qr_img):
         font_title = ImageFont.load_default()
         font_subtitle = ImageFont.load_default()
         font_instruct = ImageFont.load_default()
+        font_sub_instruct = ImageFont.load_default()
         font_url = ImageFont.load_default()
         font_footer = ImageFont.load_default()
 
-    # 3. Huy hiệu "KỶ NIỆM 15 NĂM GẮN KẾT"
+    # 3. Huy hiệu "KỶ NIỆM 15 NĂM THÀNH LẬP"
     badge_y = 660
-    badge_text = "KỶ NIỆM 15 NĂM GẮN KẾT (2011 - 2026)"
-    badge_half_w = 275
+    badge_text = "KỶ NIỆM 15 NĂM THÀNH LẬP (2011 - 2026)"
+    badge_half_w = 315
     draw.rounded_rectangle([width // 2 - badge_half_w, badge_y - 24, width // 2 + badge_half_w, badge_y + 24], radius=24, fill=(18, 30, 68), outline=COLOR_GOLD_MID, width=2)
     # Vẽ 2 viên kim cương vàng 2 bên
     diamond_offset = badge_half_w - 24
@@ -232,16 +234,16 @@ def generate_luxury_standee(qr_img):
         draw.polygon([(cx, badge_y - 6), (cx + 6, badge_y), (cx, badge_y + 6), (cx - 6, badge_y)], fill=COLOR_GOLD_LIGHT)
     draw.text((width // 2, badge_y), badge_text, fill=COLOR_GOLD_LIGHT, font=font_badge, anchor="mm")
 
-    # 4. Tiêu đề Cổng Sự Kiện
-    title_y = 740
+    # 4. Tiêu đề Trò Chơi Trắc Nghiệm Có Thưởng
+    title_y = 735
     draw.text((width // 2, title_y), "MẬT MÃ IRIS", fill=COLOR_GOLD_LIGHT, font=font_title, anchor="mm")
-    draw.text((width // 2, title_y + 60), "Cổng Định Danh & Tham Gia Sự Kiện Gala 15 Năm", fill=(192, 203, 230), font=font_subtitle, anchor="mm")
+    draw.text((width // 2, title_y + 55), "Trò Chơi Trắc Nghiệm Có Thưởng • Đấu Trí Rinh Quà", fill=(255, 228, 138), font=font_subtitle, anchor="mm")
 
     # 5. Dán Mã QR VIP đã tạo
     qr_target_size = 620
     qr_small = qr_img.resize((qr_target_size, qr_target_size), Image.Resampling.LANCZOS)
     qr_x = (width - qr_target_size) // 2
-    qr_y = 860
+    qr_y = 855
 
     # Khung hào quang phát sáng xung quanh QR Card
     glow_box = Image.new("RGBA", (width, height), (0, 0, 0, 0))
@@ -261,18 +263,21 @@ def generate_luxury_standee(qr_img):
     poster.paste(qr_small, (qr_x, qr_y), qr_small)
 
     # 6. Hướng dẫn quét & URL
-    instruct_y = qr_y + qr_target_size + 70
-    draw.text((width // 2, instruct_y), "DÙNG CAMERA ĐIỆN THOẠI HOẶC ZALO ĐỂ QUÉT", fill=COLOR_GOLD_LIGHT, font=font_instruct, anchor="mm")
+    instruct_y = qr_y + qr_target_size + 65
+    draw.text((width // 2, instruct_y), "QUÉT MÃ ĐỂ VÀO CHƠI & NHẬN THƯỞNG NGAY", fill=COLOR_GOLD_LIGHT, font=font_instruct, anchor="mm")
 
-    url_y = instruct_y + 65
+    sub_instruct_y = instruct_y + 42
+    draw.text((width // 2, sub_instruct_y), "(Mở Camera điện thoại hoặc Zalo để quét mã)", fill=(164, 179, 214), font=font_sub_instruct, anchor="mm")
+
+    url_y = sub_instruct_y + 52
     draw.rounded_rectangle([width // 2 - 310, url_y - 25, width // 2 + 310, url_y + 25], radius=16, fill=(10, 20, 52), outline=(245, 184, 46, 120), width=1)
     draw.text((width // 2, url_y), URL, fill=COLOR_GOLD_MID, font=font_url, anchor="mm")
 
     # 7. Footer thương hiệu
     footer_y = height - 90
-    draw.line([(width // 2 - 200, footer_y - 30), (width // 2 + 200, footer_y - 30)], fill=(245, 184, 46, 80), width=1)
-    draw.text((width // 2, footer_y), "CÔNG TY CỔ PHẦN TRUYỀN THÔNG IRIS", fill=(255, 255, 255), font=font_footer, anchor="mm")
-    draw.text((width // 2, footer_y + 35), "Cùng Viết Tiếp Hành Trình • 2011 - 2026", fill=(140, 156, 184), font=font_footer, anchor="mm")
+    draw.line([(width // 2 - 220, footer_y - 30), (width // 2 + 220, footer_y - 30)], fill=(245, 184, 46, 80), width=1)
+    draw.text((width // 2, footer_y), "CÔNG TY CỔ PHẦN GIẢI PHÁP CÔNG NGHỆ IRIS", fill=(255, 255, 255), font=font_footer, anchor="mm")
+    draw.text((width // 2, footer_y + 35), "Hành trình 15 năm Đổi mới & Gắn kết (2011 - 2026)", fill=(140, 156, 184), font=font_footer, anchor="mm")
 
     return poster
 
