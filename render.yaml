@@ -1,15 +1,14 @@
 services:
   - type: web
     name: iris-event-portal
-    env: static
+    runtime: static
     buildCommand: node scripts/build-config.js
     staticPublishPath: .
-    pullRequestPreviewsEnabled: false
     envVars:
       - key: PORTAL_URL
         value: https://gamezone.minigames.vn/portal/
       - key: DEFAULT_CAMPAIGN_ID
-        value: "25"
+        value: "26"
       - key: CLIENT_ID
         value: iris_app
       - key: CLIENT_NAME
@@ -27,15 +26,9 @@ services:
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
-      - path: /assets/*
+      - path: /*
         name: Cache-Control
-        value: public, max-age=31536000, immutable
-      - path: /css/*
-        name: Cache-Control
-        value: public, max-age=86400, must-revalidate
-      - path: /js/*
-        name: Cache-Control
-        value: public, max-age=86400, must-revalidate
+        value: no-cache
     routes:
       - type: rewrite
         source: /*

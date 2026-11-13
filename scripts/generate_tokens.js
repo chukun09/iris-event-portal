@@ -25,8 +25,12 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-const SECRET_KEY = env.SECRET_KEY || 'yECJeA6DgY5huGqB2Fcgs88idQqVVtvH';
-const IV_KEY = env.IV_KEY || 'JDGGPKIEVgSnXrIo';
+const SECRET_KEY = env.SECRET_KEY || process.env.SECRET_KEY || '';
+const IV_KEY = env.IV_KEY || process.env.IV_KEY || '';
+if (!SECRET_KEY || !IV_KEY) {
+  console.error('❌ Thiếu SECRET_KEY hoặc IV_KEY trong file .env hoặc biến môi trường!');
+  process.exit(1);
+}
 const CAMPAIGN_ID = env.DEFAULT_CAMPAIGN_ID || '26';
 const CLIENT_ID = env.CLIENT_ID || 'iris_app';
 const PORTAL_URL = env.PORTAL_URL || 'https://gamezone.minigames.vn/portal/';

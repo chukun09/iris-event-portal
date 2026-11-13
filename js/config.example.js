@@ -7,7 +7,7 @@
 window.APP_CONFIG = {
   PORTAL_URL: 'https://gamezone.minigames.vn/portal/',
   PORTAL_DEV_URL: 'https://gameportal-dev.anews.vn/',
-  DEFAULT_CAMPAIGN_ID: '24',
+  DEFAULT_CAMPAIGN_ID: '26',
   CLIENT_ID: 'iris_app',
   CLIENT_NAME: 'Ứng dụng sự kiện IRIS 15 Năm',
   ORG_NAME: 'Công ty cổ phần truyền thông IRIS',

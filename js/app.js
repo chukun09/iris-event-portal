@@ -8,7 +8,8 @@
 
   let currentEmployee = null;
   let selectedDepartment = null;
-  const STORAGE_KEY = 'iris_15th_recent_employee';
+  let isPinVerified = false;
+  const STORAGE_KEY = 'iris_15th_verified_emp_v2';
 
   // Confetti & Celebration State
   let confettiCtx = null;
@@ -21,7 +22,7 @@
   const searchInput = document.getElementById('searchInput');
   const clearSearchBtn = document.getElementById('clearSearchBtn');
   const searchDropdown = document.getElementById('searchResultsDropdown');
-  
+
   // Custom Dropdown Phòng Ban
   const deptDropdown = document.getElementById('deptDropdown');
   const deptTrigger = document.getElementById('deptTrigger');
@@ -40,6 +41,11 @@
   const ticketFullName = document.getElementById('ticketFullName');
   const ticketDepartment = document.getElementById('ticketDepartment');
   const ticketSerial = document.getElementById('ticketSerial');
+  const pinInput = document.getElementById('pinInput');
+  const pinFeedback = document.getElementById('pinFeedback');
+  const pinLockIcon = document.getElementById('pinLockIcon');
+  const ticketStatusDot = document.getElementById('ticketStatusDot');
+  const ticketStatusText = document.getElementById('ticketStatusText');
   const btnMainEnter = document.getElementById('btnMainEnter');
 
   // Quick Pass
@@ -70,7 +76,7 @@
           navigator.vibrate(10);
         }
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function initPortal() {
@@ -117,7 +123,7 @@
     selectedDepartment = deptName;
     deptTriggerText.textContent = deptName;
     triggerHaptic('light');
-    
+
     // Highlight option được chọn
     const allDeptOpts = deptOptionsList.querySelectorAll('.dropdown-option');
     allDeptOpts.forEach(function (item) {
@@ -201,12 +207,34 @@
   }
 
   // 5. Đặt nhân viên được chọn và hiển thị Tấm Vé VIP
-  function setEmployee(emp, shouldCelebrate = true) {
+  function verifyEmployeePin(emp, rawPin) {
+    if (!emp || !emp.pinHash || !rawPin || rawPin.length !== 4) return false;
+    const hash = CryptoJS.SHA256('IRIS15_' + String(emp.username).toUpperCase() + '_' + String(rawPin).trim()).toString();
+    return hash === emp.pinHash;
+  }
+
+  function resetPinState() {
+    isPinVerified = false;
+    btnMainEnter.disabled = true;
+    if (pinInput) {
+      pinInput.value = '';
+      pinInput.classList.remove('valid', 'invalid');
+    }
+    if (pinLockIcon) pinLockIcon.textContent = '🔒';
+    if (pinFeedback) {
+      pinFeedback.textContent = 'Nhập ngày tháng sinh của bạn để mở khóa vé (VD: sinh 10/05 nhập 1005)';
+      pinFeedback.classList.remove('success', 'error');
+    }
+    if (ticketStatusDot) ticketStatusDot.classList.add('locked');
+    if (ticketStatusText) ticketStatusText.textContent = 'Vui lòng xác thực mã PIN ngày sinh';
+  }
+
+  function setEmployee(emp) {
     currentEmployee = emp;
 
     if (!emp) {
       vipTicketCard.style.display = 'none';
-      btnMainEnter.disabled = true;
+      resetPinState();
       return;
     }
 
@@ -215,24 +243,18 @@
     ticketDepartment.textContent = emp.department;
     ticketSerial.textContent = 'ID: ' + emp.username;
 
+    resetPinState();
     vipTicketCard.style.display = 'block';
-    btnMainEnter.disabled = false;
 
-    // Kích hoạt pháo hoa hạt vàng kim & rung chúc mừng
-    if (shouldCelebrate) {
-      triggerCelebration();
-      triggerHaptic('success');
-    }
-
-    // Ẩn bàn phím ảo nếu đang focus trên mobile
+    // Ẩn bàn phím tìm kiếm và cuộn tới vé + focus ô nhập PIN
     if (document.activeElement && document.activeElement === searchInput) {
       searchInput.blur();
     }
 
-    // Cuộn nhẹ tới vé VIP
     setTimeout(function () {
       vipTicketCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 120);
+      if (pinInput) pinInput.focus();
+    }, 150);
   }
 
   function getMonogram(name) {
@@ -269,24 +291,34 @@
   // 7. Kiểm tra Quick Pass từ LocalStorage
   function checkQuickPass() {
     try {
+      localStorage.removeItem('iris_15th_recent_employee');
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        const emp = JSON.parse(saved);
-        if (emp && emp.username && emp.fullname) {
-          quickAvatar.textContent = getMonogram(emp.fullname);
-          quickName.textContent = emp.fullname;
-          quickDept.textContent = emp.department + ' • ' + emp.username;
-          quickPassBox.style.display = 'flex';
+        const parsed = JSON.parse(saved);
+        const employees = window.EVENT_DATA.employees || [];
+        const matchedEmp = parsed && parsed.username
+          ? employees.find(function (e) { return e.username === parsed.username; })
+          : null;
 
-          btnQuickEnter.onclick = function () {
-            redirectToPortal(emp);
-          };
-
-          btnSwitchUser.onclick = function () {
-            localStorage.removeItem(STORAGE_KEY);
-            quickPassBox.style.display = 'none';
-          };
+        if (!matchedEmp) {
+          localStorage.removeItem(STORAGE_KEY);
+          quickPassBox.style.display = 'none';
+          return;
         }
+
+        quickAvatar.textContent = getMonogram(matchedEmp.fullname);
+        quickName.textContent = matchedEmp.fullname;
+        quickDept.textContent = matchedEmp.department + ' • ' + matchedEmp.username;
+        quickPassBox.style.display = 'flex';
+
+        btnQuickEnter.onclick = function () {
+          redirectToPortal(matchedEmp);
+        };
+
+        btnSwitchUser.onclick = function () {
+          localStorage.removeItem(STORAGE_KEY);
+          quickPassBox.style.display = 'none';
+        };
       }
     } catch (e) {
       console.warn('LocalStorage error:', e);
@@ -441,9 +473,73 @@
       }
     });
 
+    // Xác thực Mã PIN Ngày sinh (DDMM)
+    if (pinInput) {
+      pinInput.addEventListener('input', function () {
+        const val = this.value.replace(/\D/g, '').slice(0, 4);
+        if (this.value !== val) {
+          this.value = val;
+        }
+
+        if (!currentEmployee || val.length < 4) {
+          isPinVerified = false;
+          btnMainEnter.disabled = true;
+          this.classList.remove('valid', 'invalid');
+          if (pinLockIcon) pinLockIcon.textContent = '🔒';
+          if (pinFeedback) {
+            pinFeedback.textContent = 'Nhập ngày tháng sinh của bạn để mở khóa vé (VD: sinh 10/05 nhập 1005)';
+            pinFeedback.classList.remove('success', 'error');
+          }
+          if (ticketStatusDot) ticketStatusDot.classList.add('locked');
+          if (ticketStatusText) ticketStatusText.textContent = 'Vui lòng xác thực mã PIN ngày sinh';
+          return;
+        }
+
+        if (verifyEmployeePin(currentEmployee, val)) {
+          isPinVerified = true;
+          btnMainEnter.disabled = false;
+          this.classList.remove('invalid');
+          this.classList.add('valid');
+          if (pinLockIcon) pinLockIcon.textContent = '🔓';
+          if (pinFeedback) {
+            pinFeedback.textContent = '✓ Xác thực thành công! Bấm nút bên dưới để vào cổng';
+            pinFeedback.classList.remove('error');
+            pinFeedback.classList.add('success');
+          }
+          if (ticketStatusDot) ticketStatusDot.classList.remove('locked');
+          if (ticketStatusText) ticketStatusText.textContent = 'Đã sẵn sàng kết nối Cổng Game IRIS';
+          triggerCelebration();
+          triggerHaptic('success');
+        } else {
+          isPinVerified = false;
+          btnMainEnter.disabled = true;
+          this.classList.remove('valid', 'invalid');
+          void this.offsetWidth;
+          this.classList.add('invalid');
+          if (pinLockIcon) pinLockIcon.textContent = '🔒';
+          if (pinFeedback) {
+            pinFeedback.textContent = '✕ Mã PIN chưa đúng (Nhập 4 số Ngày + Tháng sinh, VD: 1005)';
+            pinFeedback.classList.remove('success');
+            pinFeedback.classList.add('error');
+          }
+          if (ticketStatusDot) ticketStatusDot.classList.add('locked');
+          if (ticketStatusText) ticketStatusText.textContent = 'Mã PIN chưa chính xác';
+          triggerHaptic('medium');
+        }
+      });
+
+      pinInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && currentEmployee && isPinVerified) {
+          e.preventDefault();
+          triggerHaptic('medium');
+          redirectToPortal(currentEmployee);
+        }
+      });
+    }
+
     // Nút CTA Chính
     btnMainEnter.addEventListener('click', function () {
-      if (!currentEmployee) return;
+      if (!currentEmployee || !isPinVerified) return;
       triggerHaptic('medium');
       redirectToPortal(currentEmployee);
     });
@@ -489,10 +585,10 @@
 
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(emp));
-      } catch (e) {}
+      } catch (e) { }
 
       const urlParams = new URLSearchParams(window.location.search);
-      const campaignId = urlParams.get('campaignId') || config.DEFAULT_CAMPAIGN_ID || '24';
+      const campaignId = urlParams.get('campaignId') || config.DEFAULT_CAMPAIGN_ID || '26';
 
       const portalBaseUrl = config.PORTAL_URL || 'https://gamezone.minigames.vn/portal/';
       const targetUrl = new URL(portalBaseUrl);

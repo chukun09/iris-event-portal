@@ -19,7 +19,7 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=26.2">
 </head>
 
 <body>
@@ -171,9 +171,21 @@
           </div>
         </div>
 
+        <div class="ticket-pin-box" id="ticketPinBox">
+          <label class="pin-label" for="pinInput">
+            <span class="pin-lock-icon" id="pinLockIcon">🔒</span>
+            <span>Xác thực Ngày & Tháng sinh (4 số DDMM)</span>
+          </label>
+          <div class="pin-input-row">
+            <input type="password" id="pinInput" class="pin-input" inputmode="numeric" pattern="[0-9]*" maxlength="4"
+              placeholder="VD: 1005" autocomplete="off">
+          </div>
+          <div class="pin-feedback" id="pinFeedback">Nhập ngày tháng sinh của bạn để mở khóa vé (VD: sinh 10/05 nhập 1005)</div>
+        </div>
+
         <div class="ticket-footer">
-          <div class="ticket-status-dot"></div>
-          <span>Đã sẵn sàng kết nối Cổng Game IRIS</span>
+          <div class="ticket-status-dot locked" id="ticketStatusDot"></div>
+          <span id="ticketStatusText">Vui lòng xác thực mã PIN ngày sinh</span>
         </div>
       </div>
 
@@ -205,10 +217,10 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/crypto-js.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/crypto-js.min.js?v=26.2"></script>
+  <script src="js/config.js?v=26.2"></script>
+  <script src="js/data.js?v=26.2"></script>
+  <script src="js/app.js?v=26.2"></script>
 
 </body>
 

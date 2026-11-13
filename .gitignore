@@ -15,3 +15,5 @@ graphify-out/
 .env
 .env.*
 js/config.js
+scripts/tokens_*.json
+scripts/auth_report_*.json
