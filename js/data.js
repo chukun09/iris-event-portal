@@ -1,4 +1,4 @@
-﻿/**
+/**
  * IRIS 15 Years Event - Employee & Department Data
  */
 window.EVENT_DATA = {
@@ -41,619 +41,626 @@ window.EVENT_DATA = {
       "note": ""
     },
     {
-      "stt": 5,
+      "stt": 4,
       "username": "HANAMICHI",
       "fullname": "Nguyễn Tuấn Anh",
       "department": "Ban Tổng Giám đốc",
       "note": ""
     },
     {
-      "stt": 6,
+      "stt": 5,
       "username": "PINK",
       "fullname": "Lê Thị Thanh Hương",
       "department": "Ban Tổng Giám đốc",
       "note": ""
     },
     {
-      "stt": 7,
+      "stt": 6,
       "username": "ASHENG",
       "fullname": "Trần Huy Thịnh",
       "department": "Ban Tổng Giám đốc",
       "note": ""
     },
     {
-      "stt": 8,
+      "stt": 7,
       "username": "THUYTTT",
       "fullname": "Trần Thị Thanh Thùy",
       "department": "Ban Tổng Giám đốc",
       "note": ""
     },
     {
-      "stt": 9,
+      "stt": 8,
       "username": "MYXLINH",
       "fullname": "Phạm Mỹ Linh",
       "department": "Bộ phận Trợ lý",
       "note": ""
     },
     {
-      "stt": 10,
+      "stt": 9,
       "username": "HATHU87",
       "fullname": "Hà Thị Thư",
       "department": "Bộ phận Trợ lý",
       "note": ""
     },
     {
-      "stt": 11,
+      "stt": 10,
       "username": "LEOSPAPA",
       "fullname": "Nguyễn Tiến Nam",
       "department": "Chi nhánh HCM",
       "note": ""
     },
     {
-      "stt": 12,
+      "stt": 11,
       "username": "BUUBEO",
       "fullname": "Phạm Gia Bửu",
       "department": "Chi nhánh HCM",
       "note": ""
     },
     {
-      "stt": 13,
+      "stt": 12,
       "username": "ZIXUYNH",
       "fullname": "Hà Thị Hoàng Vi",
       "department": "Chi nhánh HCM",
       "note": ""
     },
     {
-      "stt": 14,
+      "stt": 13,
       "username": "KEMBO",
       "fullname": "Bùi Thị Hoàng Linh",
       "department": "Chi nhánh HCM",
       "note": ""
     },
     {
-      "stt": 15,
+      "stt": 14,
       "username": "MINHON",
       "fullname": "Nguyễn Thị Mai Phương",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 16,
+      "stt": 15,
       "username": "DUNGCA",
       "fullname": "Nguyễn Xuân Dũng",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 17,
+      "stt": 16,
       "username": "GIAGCHIP",
       "fullname": "Đào Hương Giang",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 18,
+      "stt": 17,
       "username": "MRLEEE",
       "fullname": "Lê Văn Trầm",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 19,
+      "stt": 18,
       "username": "RANCHU",
       "fullname": "Hồ Anh Quân",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 20,
+      "stt": 19,
       "username": "THANHNT",
       "fullname": "Nguyễn Tất Thành",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 21,
+      "stt": 20,
       "username": "THANHBU84",
       "fullname": "Nguyễn Hà Thành",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 22,
+      "stt": 21,
       "username": "BOYCODON",
       "fullname": "Trần Tùng Anh",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 3,
+      "stt": 22,
       "username": "THANGNT",
       "fullname": "Nguyễn Trần Thắng",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 24,
+      "stt": 23,
       "username": "NGOHUNG",
       "fullname": "Ngô Thanh Hưng",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 25,
+      "stt": 24,
       "username": "MINHGIAM",
       "fullname": "Nguyễn Minh Giám",
       "department": "Phòng CSKH",
       "note": ""
     },
     {
-      "stt": 26,
+      "stt": 25,
       "username": "THAOKEO",
       "fullname": "Nguyễn Phương Thảo",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 27,
+      "stt": 26,
       "username": "NHUNG",
       "fullname": "Lê Hồng Nhung",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 28,
+      "stt": 27,
       "username": "ANYEN",
       "fullname": "Phi Ngọc Huyền",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 29,
+      "stt": 28,
       "username": "OANH",
       "fullname": "Phạm Thị Oanh",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 30,
+      "stt": 29,
       "username": "VAN",
       "fullname": "Nguyễn Thị Cẩm Vân",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 31,
+      "stt": 30,
       "username": "DOCAM",
       "fullname": "Đỗ Thị Cẩm",
       "department": "Phòng ĐSVH",
       "note": ""
     },
     {
-      "stt": 32,
+      "stt": 31,
       "username": "HASAMM",
       "fullname": "Lê Ngân Hà",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 33,
+      "stt": 32,
       "username": "ONLYMAY",
       "fullname": "Phan Thị Tường Vân",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 34,
+      "stt": 33,
       "username": "HUONGNG",
       "fullname": "Nguyễn Hoàng Thanh Hường",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 35,
+      "stt": 34,
       "username": "LINHVUX",
       "fullname": "Vũ Khánh Linh",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 36,
+      "stt": 35,
       "username": "NGNHNG",
       "fullname": "Phạm Thị Nguyên Hương",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 37,
+      "stt": 36,
       "username": "NGOCHUE",
       "fullname": "Tạ Thị Ngọc Huệ",
       "department": "Phòng HCNS",
       "note": ""
     },
     {
-      "stt": 38,
+      "stt": 37,
       "username": "HIEU98",
       "fullname": "Hồ Văn Trung Hiếu",
       "department": "Lái xe",
       "note": ""
     },
     {
-      "stt": 39,
+      "stt": 38,
       "username": "VITCOI",
       "fullname": "Nguyễn Đức Việt",
       "department": "Lái xe",
       "note": ""
     },
     {
-      "stt": 40,
+      "stt": 39,
       "username": "M",
       "fullname": "Dương Tự Minh",
       "department": "Lái xe",
       "note": ""
     },
     {
-      "stt": 41,
+      "stt": 40,
       "username": "TOANDV",
       "fullname": "Dương Việt Toàn",
       "department": "Lái xe",
       "note": ""
     },
     {
-      "stt": 42,
+      "stt": 41,
       "username": "BACHHOP",
       "fullname": "Chu Thúy Dịu",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 43,
+      "stt": 42,
       "username": "HOATTT",
       "fullname": "Trần Thị Thu Hoa",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 44,
+      "stt": 43,
       "username": "THUTHUY",
       "fullname": "Lê Thị Thu Thủy",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 45,
+      "stt": 44,
       "username": "NGOCNT",
       "fullname": "Nguyễn Thanh Ngọc",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 46,
+      "stt": 45,
       "username": "HAGA",
       "fullname": "Nguyễn Thị Thu Hà",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 47,
+      "stt": 46,
       "username": "THOCTHOI",
       "fullname": "Nguyễn Thị Hường",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 48,
+      "stt": 47,
       "username": "XIAONT",
       "fullname": "Nguyễn Thị Hiếu",
       "department": "Phòng Kế toán",
       "note": ""
     },
     {
-      "stt": 49,
+      "stt": 48,
       "username": "ZUYHUN",
       "fullname": "Đào Duy Hưng",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 50,
+      "stt": 49,
       "username": "KOALA",
       "fullname": "Vũ Phương Dung",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 51,
+      "stt": 50,
       "username": "LITRANG",
       "fullname": "Phạm Linh Trang",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 52,
+      "stt": 51,
       "username": "ZIUZIU",
       "fullname": "Ngô Thị Thanh Dịu",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 53,
+      "stt": 52,
       "username": "LUNQLYN",
       "fullname": "Lùng Thùy Linh",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 54,
+      "stt": 53,
       "username": "DUNGNHI",
       "fullname": "Lưu Thùy Dung",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 55,
+      "stt": 54,
       "username": "THANHNT88",
       "fullname": "Nguyễn Tuấn Thanh",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 56,
+      "stt": 55,
       "username": "BABEEKUTE",
       "fullname": "Phạm Lê Khánh Huyền",
       "department": "Phòng Kinh doanh",
       "note": ""
     },
     {
-      "stt": 57,
+      "stt": 56,
       "username": "BADBOYZ",
       "fullname": "Phạm Thế Tuyền",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 58,
+      "stt": 57,
       "username": "THUXOKE",
       "fullname": "Nguyễn Hà Thu",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 59,
+      "stt": 58,
       "username": "SUN",
       "fullname": "Bùi Vũ Thành",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 60,
+      "stt": 59,
       "username": "KIENLV",
       "fullname": "Lê Văn Kiên",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 61,
+      "stt": 60,
       "username": "DUYTHAI",
       "fullname": "Bùi Duy Thái",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 62,
+      "stt": 61,
       "username": "HIENTN",
       "fullname": "Trần Ngọc Hiển",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 63,
+      "stt": 62,
       "username": "HUNGNV",
       "fullname": "Nguyễn Văn Hùng",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 64,
+      "stt": 63,
       "username": "DANHNT",
       "fullname": "Nguyễn Thành Danh",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 65,
+      "stt": 64,
       "username": "JOSEPH",
       "fullname": "Vũ Quý Ngọc",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 66,
+      "stt": 65,
       "username": "LH",
       "fullname": "Lâm Văn Hoàn",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 67,
+      "stt": 66,
       "username": "PHUCTHIEN",
       "fullname": "Nguyễn Phúc Thiện",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 68,
+      "stt": 67,
       "username": "KIENPD",
       "fullname": "Phạm Đức Kiện",
       "department": "Phòng KTVH",
       "note": ""
     },
     {
-      "stt": 69,
+      "stt": 68,
       "username": "BABYSHARK",
       "fullname": "Lê Thị Kim Tuyến",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 70,
+      "stt": 69,
       "username": "THOVE",
       "fullname": "Nguyễn Cường",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 71,
+      "stt": 70,
       "username": "JANE",
       "fullname": "Đàm Ngọc Minh Châu",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 72,
+      "stt": 71,
       "username": "HIENGO",
       "fullname": "Ngô Thị Thu Hiền",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 73,
+      "stt": 72,
       "username": "ANDYTRAN",
       "fullname": "Trần Anh Thi",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 74,
+      "stt": 73,
       "username": "HUONGTT99",
       "fullname": "Trương Thu Hương",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 75,
+      "stt": 74,
       "username": "THAOHP",
       "fullname": "Hoàng Phương Thảo",
       "department": "Phòng Phát triển kinh doanh",
       "note": ""
     },
     {
-      "stt": 76,
+      "stt": 75,
       "username": "WUKONG",
       "fullname": "Nguyễn Tuấn Quang",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 77,
+      "stt": 76,
       "username": "HEHEBOY",
       "fullname": "Tạ Đăng Sáng",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 78,
+      "stt": 77,
       "username": "CAPYLONG",
       "fullname": "Trần Đức Long",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 79,
+      "stt": 78,
       "username": "LEVIS",
       "fullname": "Trần Quốc Phong",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 80,
+      "stt": 79,
       "username": "DIZU",
       "fullname": "Đinh Quang Dũng",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 81,
+      "stt": 80,
       "username": "VINHNQ",
       "fullname": "Nguyễn Quang Vinh",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 82,
+      "stt": 81,
       "username": "TOILADAT",
       "fullname": "Nguyễn Tiến Đạt",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 83,
+      "stt": 82,
       "username": "KHOAIGAO",
       "fullname": "Nguyễn Tuấn Anh",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 84,
+      "stt": 83,
       "username": "HUANKC",
       "fullname": "Khúc Chí Huân",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 85,
+      "stt": 84,
       "username": "PHONGKH",
       "fullname": "Khổng Hoàng Phong",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 86,
+      "stt": 85,
       "username": "CALLMEHIU",
       "fullname": "Nguyễn Trung Hiếu",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 87,
+      "stt": 86,
       "username": "TU",
       "fullname": "Hà Ngọc Tú",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 88,
-      "username": "MINH LE",
+      "stt": 87,
+      "username": "MINHLE",
       "fullname": "Lê Quang Minh",
       "department": "Phòng Phát triển phần mềm",
       "note": ""
     },
     {
-      "stt": 89,
+      "stt": 88,
       "username": "NHIXINH",
       "fullname": "Nguyễn Thị Hiền Nhi",
       "department": "Phòng Sản phẩm",
       "note": ""
     },
     {
-      "stt": 90,
+      "stt": 89,
       "username": "CAPYCHI",
       "fullname": "Trần Thùy Chi",
       "department": "Phòng Sản phẩm",
       "note": ""
     },
     {
-      "stt": 91,
+      "stt": 90,
       "username": "NGARUSSIA",
       "fullname": "Nguyễn Quỳnh Nga",
       "department": "Phòng Sản phẩm",
       "note": ""
     },
     {
-      "stt": 92,
+      "stt": 91,
       "username": "HIENNT1",
       "fullname": "Nguyễn Thị Hiền",
       "department": "Phòng Sản phẩm",
+      "note": ""
+    },
+    {
+      "stt": 92,
+      "username": "MEINGUYEN",
+      "fullname": "Nguyễn Trà My",
+      "department": "Phòng Kinh doanh",
       "note": ""
     }
   ]
